@@ -1,5 +1,6 @@
 package com.dk.plane.entity;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Background extends Base{
@@ -12,8 +13,8 @@ public class Background extends Base{
     }
 
     @Override
-    public void paintSelf(Graphics g) {
-        super.paintSelf(g);
+    public void paintSelf(Graphics g, JFrame jFrame) {
+        super.paintSelf(g,jFrame);
         y += speed;
         if (y > 0){
             y = -2000;

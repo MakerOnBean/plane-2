@@ -3,6 +3,7 @@ package com.dk.plane.entity;
 import com.dk.plane.service.GameService;
 import lombok.*;
 
+import javax.swing.*;
 import java.awt.*;
 
 @Data
@@ -45,7 +46,7 @@ public class Base {
     /**
      * 所使用的窗体
      */
-    GameService gameService;
+    //GameService gameService;
 
     /**
      * x,y
@@ -68,7 +69,7 @@ public class Base {
     /**
      * 绘制自身
      */
-    public void paintSelf(Graphics g){
+    public void paintSelf(Graphics g, JFrame jFrame){
         g.drawImage(image,x,y,null);
     }
 

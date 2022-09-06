@@ -62,7 +62,9 @@ public class GameWin extends JFrame {
         });
 
         while (true){
-            repaint();
+            if (GameService.status == 1) {
+                repaint();
+            }
             try {
                 Thread.sleep(25);
             } catch (InterruptedException e) {
@@ -84,8 +86,6 @@ public class GameWin extends JFrame {
         gameService.statusHandle(gImage,this);
         g.drawImage(offScreenImage,0,0,null);
     }
-
-
 
     public void run(){
         init();

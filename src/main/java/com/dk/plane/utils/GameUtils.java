@@ -2,6 +2,9 @@ package com.dk.plane.utils;
 
 
 
+import com.dk.plane.entity.Base;
+import com.dk.plane.entity.Shell;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,21 +48,21 @@ public class GameUtils {
      */
     public static Image enemyImage = Toolkit.getDefaultToolkit().getImage("src/main/resources/imgs/enemy.png");
 
-    ///**
-    // * 游戏物体集合
-    // */
-    //public static List<Base> gameList = new ArrayList<>();
-    //
+    /**
+     * 游戏物体集合
+     */
+    public static List<Base> gameList = new ArrayList<>();
+
     ///**
     // * 要删除的元素集合
     // */
     //public static List<Base> removeList = new ArrayList<>();
-    //
-    ///**
-    // * 我方子弹集合
-    // */
-    //public static List<Shell> shellList = new ArrayList<>();
-    //
+
+    /**
+     * 我方子弹集合
+     */
+    public static List<Shell> shellList = new ArrayList<>();
+
     ///**
     // * 我方子弹集合
     // */

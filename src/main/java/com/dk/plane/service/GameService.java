@@ -1,14 +1,21 @@
 package com.dk.plane.service;
 
 import com.dk.plane.entity.Background;
+import com.dk.plane.entity.Base;
+import com.dk.plane.entity.Plane;
+import com.dk.plane.entity.Shell;
 import com.dk.plane.utils.GameUtils;
 import com.dk.plane.win.GameWin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
 
 /**
  * 业务逻辑
@@ -23,10 +30,25 @@ public class GameService {
     public static int status;
 
     /**
+     * 游戏重绘次数
+     */
+    @Value("${game.defaultCount}")
+    private static int count;
+
+    /**
      * 背景对象
      */
     @Autowired
     private Background background;
+
+    /**
+     * 飞机对象
+     */
+    @Autowired
+    private Plane plane;
+
+
+
 
     /**
      * 状态操作处理器
@@ -43,8 +65,32 @@ public class GameService {
             GameUtils.drawWord(g,"点击开始游戏",Color.yellow,40,180,300);
         }
         if (status == 1){
-            background.paintSelf(g);
+            createObj();
+            List<Base> gameList = GameUtils.gameList;
+            for (int i = 0; i < gameList.size(); i++){
+                gameList.get(i).paintSelf(g,jFrame);
+            }
+        }
+        count++;
+    }
+
+    /**
+     * 创建子弹、敌机
+     */
+    private void createObj(){
+        if (count % 15 == 0) {
+            //我方子弹
+            GameUtils.shellList.add(new Shell(GameUtils.shellImage, plane.getX() + 3, plane.getY() - 16, 14, 25, 5));
+            GameUtils.gameList.add(GameUtils.shellList.get(GameUtils.shellList.size() - 1));
         }
     }
 
+    /**
+     * 将单实例的背景和飞机添加到gameList中
+     */
+    @PostConstruct
+    void addObjToGameList(){
+        GameUtils.gameList.add(background);
+        GameUtils.gameList.add(plane);
+    }
 }
