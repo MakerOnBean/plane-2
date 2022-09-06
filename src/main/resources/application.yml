@@ -1,0 +1,8 @@
+game:
+  defaultStatus: 0
+  defaultCount: 0
+  defaultScore: 0
+  defaultEnemyCount: 0
+  width: 600
+  height: 600
+
