@@ -1,7 +1,9 @@
 package com.dk.plane.service;
 
+import com.dk.plane.entity.Background;
 import com.dk.plane.utils.GameUtils;
 import com.dk.plane.win.GameWin;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +18,15 @@ public class GameService {
 
     /**
      * 状态码
-     *
      */
     @Value("${game.defaultStatus}")
     public static int status;
+
+    /**
+     * 背景对象
+     */
+    @Autowired
+    private Background background;
 
     /**
      * 状态操作处理器
@@ -34,6 +41,9 @@ public class GameService {
 
             //设置字体
             GameUtils.drawWord(g,"点击开始游戏",Color.yellow,40,180,300);
+        }
+        if (status == 1){
+            background.paintSelf(g);
         }
     }
 
