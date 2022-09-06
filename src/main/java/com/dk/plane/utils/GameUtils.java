@@ -2,8 +2,7 @@ package com.dk.plane.utils;
 
 
 
-import com.dk.plane.entity.Base;
-import com.dk.plane.entity.Shell;
+import com.dk.plane.entity.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -41,7 +40,7 @@ public class GameUtils {
     /**
      * 我方子弹图片
      */
-    public static Image bulletImage = Toolkit.getDefaultToolkit().getImage("src/main/resources//bullet.png");
+    public static Image bulletImage = Toolkit.getDefaultToolkit().getImage("src/main/resources/imgs/bullet.png");
 
     /**
      * 敌方战机图片
@@ -53,30 +52,30 @@ public class GameUtils {
      */
     public static List<Base> gameList = new ArrayList<>();
 
-    ///**
-    // * 要删除的元素集合
-    // */
-    //public static List<Base> removeList = new ArrayList<>();
+    /**
+     * 要删除的元素集合
+     */
+    public static List<Base> removeList = new ArrayList<>();
 
     /**
      * 我方子弹集合
      */
     public static List<Shell> shellList = new ArrayList<>();
 
-    ///**
-    // * 我方子弹集合
-    // */
-    //public static List<Bullet> bulletList = new ArrayList<>();
-    //
-    ///**
-    // * 敌方战机集合
-    // */
-    //public static List<Enemy> enemyList = new ArrayList<>();
-    //
-    ///**
-    // * 爆炸效果集合
-    // */
-    //public static List<Explode> explodeList = new ArrayList<>();
+    /**
+     * 敌方子弹集合
+     */
+    public static List<Bullet> bulletList = new ArrayList<>();
+
+    /**
+     * 敌方战机集合
+     */
+    public static List<Enemy> enemyList = new ArrayList<>();
+
+    /**
+     * 爆炸效果集合
+     */
+    public static List<Explode> explodeList = new ArrayList<>();
 
     /**
      * 绘制字符串

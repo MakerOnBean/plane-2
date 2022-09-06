@@ -21,8 +21,8 @@ public class Plane extends Base{
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame) {
-        super.paintSelf(g,jFrame);
+    public void paintSelf(Graphics g, JFrame jFrame,GameService gameService) {
+        super.paintSelf(g,jFrame,gameService);
         if (!isMouseMove){
             isMouseMove = true;
             jFrame.addMouseMotionListener(new MouseAdapter() {
@@ -32,6 +32,11 @@ public class Plane extends Base{
                     Plane.super.setY(e.getY() - 16);
                 }
             });
+        }
+
+        //我方飞机与敌方boss碰撞检测
+        if(gameService.getBoss() != null && getRectangle().intersects(gameService.getBoss().getRectangle())){
+            GameService.status = 3;
         }
     }
 

@@ -69,7 +69,7 @@ public class Base {
     /**
      * 绘制自身
      */
-    public void paintSelf(Graphics g, JFrame jFrame){
+    public void paintSelf(Graphics g, JFrame jFrame,GameService gameService){
         g.drawImage(image,x,y,null);
     }
 

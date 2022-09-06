@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -57,6 +59,23 @@ public class GameWin extends JFrame {
                 if (e.getButton() == 1 && GameService.status == 0){
                     GameService.status = 1;
                     repaint();
+                }
+            }
+        });
+
+        //键盘监控
+        this.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode()==32){
+                    switch (GameService.status){
+                        case 1:
+                            GameService.status = 2;
+                            break;
+                        case 2:
+                            GameService.status = 1;
+                            break;
+                    }
                 }
             }
         });

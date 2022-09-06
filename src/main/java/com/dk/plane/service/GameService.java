@@ -1,11 +1,10 @@
 package com.dk.plane.service;
 
-import com.dk.plane.entity.Background;
-import com.dk.plane.entity.Base;
-import com.dk.plane.entity.Plane;
-import com.dk.plane.entity.Shell;
+import com.dk.plane.entity.*;
 import com.dk.plane.utils.GameUtils;
 import com.dk.plane.win.GameWin;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -13,14 +12,13 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 
 /**
  * 业务逻辑
  */
 @Component
+@Getter
+@Setter
 public class GameService {
 
     /**
@@ -36,6 +34,18 @@ public class GameService {
     private static int count;
 
     /**
+     * 分数
+     */
+    @Value("${game.defaultScore}")
+    public static int score;
+
+    /**
+     * 敌机生成数量
+     */
+    @Value("${game.defaultEnemyCount}")
+    private static int enemyCount;
+
+    /**
      * 背景对象
      */
     @Autowired
@@ -47,7 +57,10 @@ public class GameService {
     @Autowired
     private Plane plane;
 
-
+    /**
+     * boss对象
+     */
+    private Boss boss;
 
 
     /**
@@ -66,11 +79,33 @@ public class GameService {
         }
         if (status == 1){
             createObj();
-            List<Base> gameList = GameUtils.gameList;
-            for (int i = 0; i < gameList.size(); i++){
-                gameList.get(i).paintSelf(g,jFrame);
+            //添加爆炸图画
+            GameUtils.gameList.addAll(GameUtils.explodeList);
+
+            for(int i = 0 ;i < GameUtils.gameList.size(); i++){
+                Base gameObj = GameUtils.gameList.get(i);
+                gameObj.paintSelf(g,jFrame,this);
             }
+            GameUtils.gameList.removeAll(GameUtils.removeList);
         }
+        if (status == 3) {
+            //当游戏失败 状态码为3
+            //设置背景
+            g.drawImage(GameUtils.explodeImage, plane.getX()-35, plane.getY()-50, jFrame);
+
+            //设置字体
+            GameUtils.drawWord(g,"游戏失败",Color.RED,50,180,300);
+        }
+        if (status == 4) {
+            //当游戏通关 状态码为4
+            //设置背景
+            g.drawImage(GameUtils.explodeImage, boss.getX()+30, boss.getY()-50, jFrame);
+
+            //设置字体
+            GameUtils.drawWord(g,"游戏通关",Color.GREEN,50,190,300);
+        }
+        //绘制记分面板
+        GameUtils.drawWord(g,score + " 分",Color.GREEN,40,30,100);
         count++;
     }
 
@@ -82,6 +117,21 @@ public class GameService {
             //我方子弹
             GameUtils.shellList.add(new Shell(GameUtils.shellImage, plane.getX() + 3, plane.getY() - 16, 14, 25, 5));
             GameUtils.gameList.add(GameUtils.shellList.get(GameUtils.shellList.size() - 1));
+        }
+        if (count % 15 == 0){
+            //敌机
+            GameUtils.enemyList.add(new Enemy(GameUtils.enemyImage,((int)(Math.random()*12)*50),0,49,36,5));
+            GameUtils.gameList.add(GameUtils.enemyList.get(GameUtils.enemyList.size() - 1));
+            enemyCount++;
+        }
+        if (count % 15 == 0 && null != boss) {
+            //敌方子弹
+            GameUtils.bulletList.add(new Bullet(GameUtils.bulletImage, boss.getX() + 76, boss.getY() + 85, 15, 25, 5));
+            GameUtils.gameList.add(GameUtils.bulletList.get(GameUtils.bulletList.size() - 1));
+        }
+        if (enemyCount > 1 && null == boss){
+            boss = new Boss(GameUtils.bossImage,255,35,155,100,5);
+            GameUtils.gameList.add(boss);
         }
     }
 
