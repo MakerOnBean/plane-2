@@ -68,16 +68,20 @@ public class Base {
 
     /**
      * 绘制自身
+     *
+     * @param g           画布 必须传入
+     * @param jFrame      窗体对象 需要添加时间监听时传入
+     * @param gameService 游戏业务逻辑 需要碰撞检测时传入
      */
-    public void paintSelf(Graphics g, JFrame jFrame,GameService gameService){
-        g.drawImage(image,x,y,null);
+    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+        g.drawImage(image, x, y, null);
     }
 
     /**
      * 获取矩形，用于碰撞检测
      */
-    public Rectangle getRectangle(){
-        return new Rectangle(x,y,width,height);
+    public Rectangle getRectangle() {
+        return new Rectangle(x, y, width, height);
     }
 
 

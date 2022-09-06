@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Plane extends Base{
+public class Plane extends Base {
 
     private Boolean isMouseMove = false;
 
@@ -21,9 +21,9 @@ public class Plane extends Base{
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame,GameService gameService) {
-        super.paintSelf(g,jFrame,gameService);
-        if (!isMouseMove){
+    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+        super.paintSelf(g, jFrame, gameService);
+        if (!isMouseMove) {
             isMouseMove = true;
             jFrame.addMouseMotionListener(new MouseAdapter() {
                 @Override
@@ -35,7 +35,7 @@ public class Plane extends Base{
         }
 
         //我方飞机与敌方boss碰撞检测
-        if(gameService.getBoss() != null && getRectangle().intersects(gameService.getBoss().getRectangle())){
+        if (gameService.getBoss() != null && getRectangle().intersects(gameService.getBoss().getRectangle())) {
             GameService.status = 3;
         }
     }

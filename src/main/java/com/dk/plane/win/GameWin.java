@@ -45,7 +45,7 @@ public class GameWin extends JFrame {
     /**
      * 初始化方法
      */
-    public void init(){
+    public void init() {
         this.setSize(width, height);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
@@ -56,7 +56,7 @@ public class GameWin extends JFrame {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == 1 && GameService.status == 0){
+                if (e.getButton() == 1 && GameService.status == 0) {
                     GameService.status = 1;
                     repaint();
                 }
@@ -67,8 +67,8 @@ public class GameWin extends JFrame {
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode()==32){
-                    switch (GameService.status){
+                if (e.getKeyCode() == 32) {
+                    switch (GameService.status) {
                         case 1:
                             GameService.status = 2;
                             break;
@@ -80,7 +80,7 @@ public class GameWin extends JFrame {
             }
         });
 
-        while (true){
+        while (true) {
             if (GameService.status == 1) {
                 repaint();
             }
@@ -98,15 +98,15 @@ public class GameWin extends JFrame {
     @Override
     public void paint(Graphics g) {
         if (offScreenImage == null) {
-            offScreenImage = createImage(width,height);
+            offScreenImage = createImage(width, height);
         }
         Graphics gImage = offScreenImage.getGraphics();
-        gImage.fillRect(0,0,width,height);
-        gameService.statusHandle(gImage,this);
-        g.drawImage(offScreenImage,0,0,null);
+        gImage.fillRect(0, 0, width, height);
+        gameService.statusHandle(gImage, this);
+        g.drawImage(offScreenImage, 0, 0, null);
     }
 
-    public void run(){
+    public void run() {
         init();
     }
 }

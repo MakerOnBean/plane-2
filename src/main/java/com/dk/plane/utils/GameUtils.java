@@ -1,7 +1,5 @@
 package com.dk.plane.utils;
 
-
-
 import com.dk.plane.entity.*;
 
 import java.awt.*;
@@ -80,9 +78,9 @@ public class GameUtils {
     /**
      * 绘制字符串
      */
-    public static void drawWord(Graphics gImage,String str, Color color, int size, int x, int y){
+    public static void drawWord(Graphics gImage, String str, Color color, int size, int x, int y) {
         gImage.setColor(color);
-        gImage.setFont(new Font("仿宋",Font.BOLD,size));
-        gImage.drawString(str,x,y);
+        gImage.setFont(new Font("仿宋", Font.BOLD, size));
+        gImage.drawString(str, x, y);
     }
 }

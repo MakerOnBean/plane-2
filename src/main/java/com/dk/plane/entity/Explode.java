@@ -22,10 +22,9 @@ public class Explode extends Base {
      */
     static {
         for (int i = 0; i < 16; i++) {
-            pic[i] = Toolkit.getDefaultToolkit().getImage("src/main/resources/imgs/explode/e"+(i+1)+".gif");
+            pic[i] = Toolkit.getDefaultToolkit().getImage("src/main/resources/imgs/explode/e" + (i + 1) + ".gif");
         }
     }
-
 
 
     public Explode(int x, int y) {
@@ -34,9 +33,9 @@ public class Explode extends Base {
 
     @Override
     public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
-        if (explodeCount < 16){
+        if (explodeCount < 16) {
             image = pic[explodeCount++];
-            super.paintSelf(g,jFrame,gameService);
+            super.paintSelf(g, jFrame, gameService);
         }
 
     }

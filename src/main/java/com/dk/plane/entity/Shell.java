@@ -19,7 +19,7 @@ public class Shell extends Base {
 
     @Override
     public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
-        super.paintSelf(g,jFrame,gameService);
+        super.paintSelf(g, jFrame, gameService);
         y -= speed;
     }
 

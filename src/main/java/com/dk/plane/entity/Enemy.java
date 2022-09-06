@@ -20,13 +20,13 @@ public class Enemy extends Base {
 
     @Override
     public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
-        super.paintSelf(g,jFrame,gameService);
+        super.paintSelf(g, jFrame, gameService);
         y += speed;
 
         //子弹与敌机碰撞检测
         GameUtils.shellList.forEach(shell -> {
             if (this.getRectangle().intersects(shell.getRectangle())) {
-                Explode explode = new Explode(x,y);
+                Explode explode = new Explode(x, y);
                 GameUtils.explodeList.add(explode);
                 GameUtils.removeList.add(explode);
                 this.setX(-200);
@@ -45,7 +45,7 @@ public class Enemy extends Base {
         }
 
         //敌方飞机越界处理
-        if (y > 600){
+        if (y > 600) {
             x = -200;
             y = 200;
             GameUtils.removeList.add(this);

@@ -5,7 +5,7 @@ import com.dk.plane.service.GameService;
 import javax.swing.*;
 import java.awt.*;
 
-public class Background extends Base{
+public class Background extends Base {
     public Background() {
         super();
     }
@@ -15,10 +15,10 @@ public class Background extends Base{
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame,GameService gameService) {
-        super.paintSelf(g,jFrame,gameService);
+    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+        super.paintSelf(g, jFrame, gameService);
         y += speed;
-        if (y > 0){
+        if (y > 0) {
             y = -2000;
         }
     }
