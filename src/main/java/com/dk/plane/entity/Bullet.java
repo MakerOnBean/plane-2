@@ -20,12 +20,7 @@ public class Bullet extends Base {
             GameService.status = 3;
         }
 
-        //子弹飞出屏幕后删除
-        if (y < 0) {
-            x = -100;
-            y = 100;
-            GameUtils.removeList.add(this);
-        }
+
 
         //敌方子弹越界后处理
         if (y > 600) {

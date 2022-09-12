@@ -1,6 +1,7 @@
 package com.dk.plane.entity;
 
 import com.dk.plane.service.GameService;
+import com.dk.plane.utils.GameUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,13 @@ public class Shell extends Base {
     public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
         super.paintSelf(g, jFrame, gameService);
         y -= speed;
+
+        //子弹飞出屏幕后删除
+        if (y < 0) {
+            x = -100;
+            y = 100;
+            GameUtils.removeList.add(this);
+        }
     }
 
     @Override

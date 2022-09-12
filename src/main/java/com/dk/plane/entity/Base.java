@@ -7,8 +7,6 @@ import javax.swing.*;
 import java.awt.*;
 
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Base {

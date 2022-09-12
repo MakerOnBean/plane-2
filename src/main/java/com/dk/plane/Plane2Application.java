@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+/**
+ * 主启动
+ */
 @SpringBootApplication
 public class Plane2Application {
     public static void main(String[] args) {
@@ -13,5 +16,4 @@ public class Plane2Application {
         GameWin gameWin = context.getBean(GameWin.class);
         gameWin.run();
     }
-
 }
