@@ -1,6 +1,7 @@
 package com.dk.plane.win;
 
 import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -56,8 +57,8 @@ public class GameWin extends JFrame {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (e.getButton() == 1 && GameService.status == 0) {
-                    GameService.status = 1;
+                if (e.getButton() == 1 && GameServiceImpl.status == 0) {
+                    GameServiceImpl.status = 1;
                     repaint();
                 }
             }
@@ -68,12 +69,12 @@ public class GameWin extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == 32) {
-                    switch (GameService.status) {
+                    switch (GameServiceImpl.status) {
                         case 1:
-                            GameService.status = 2;
+                            GameServiceImpl.status = 2;
                             break;
                         case 2:
-                            GameService.status = 1;
+                            GameServiceImpl.status = 1;
                             break;
                     }
                 }
@@ -81,7 +82,7 @@ public class GameWin extends JFrame {
         });
 
         while (true) {
-            if (GameService.status == 1) {
+            if (GameServiceImpl.status == 1) {
                 repaint();
             }
             try {

@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 import com.dk.plane.utils.GameUtils;
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ public class Boss extends Base {
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         super.paintSelf(g, jFrame, gameService);
 
         //boss移动
@@ -33,7 +33,7 @@ public class Boss extends Base {
                 this.life--;
 
                 if (life <= 0) {
-                    GameService.status = 4;
+                    GameServiceImpl.status = 4;
                 }
 
             }

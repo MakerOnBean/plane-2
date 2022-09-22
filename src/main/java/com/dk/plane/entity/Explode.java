@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,7 +32,7 @@ public class Explode extends Base {
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         if (explodeCount < 16) {
             image = pic[explodeCount++];
             super.paintSelf(g, jFrame, gameService);

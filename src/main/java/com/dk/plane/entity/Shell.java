@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 import com.dk.plane.utils.GameUtils;
 
 import javax.swing.*;
@@ -19,7 +19,7 @@ public class Shell extends Base {
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         super.paintSelf(g, jFrame, gameService);
         y -= speed;
 

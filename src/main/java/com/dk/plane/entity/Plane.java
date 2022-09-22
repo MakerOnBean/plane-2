@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +21,7 @@ public class Plane extends Base {
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         super.paintSelf(g, jFrame, gameService);
         if (!isMouseMove) {
             isMouseMove = true;
@@ -36,7 +36,7 @@ public class Plane extends Base {
 
         //我方飞机与敌方boss碰撞检测
         if (gameService.getBoss() != null && getRectangle().intersects(gameService.getBoss().getRectangle())) {
-            GameService.status = 3;
+            GameServiceImpl.status = 3;
         }
     }
 

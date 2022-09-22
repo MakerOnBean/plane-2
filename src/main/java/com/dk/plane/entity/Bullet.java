@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 import com.dk.plane.utils.GameUtils;
 
 import javax.swing.*;
@@ -12,12 +12,12 @@ public class Bullet extends Base {
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         super.paintSelf(g, jFrame, gameService);
         y += speed;
         //敌方子弹与飞机碰撞检测
         if (this.getRectangle().intersects(gameService.getPlane().getRectangle())) {
-            GameService.status = 3;
+            GameServiceImpl.status = 3;
         }
 
 

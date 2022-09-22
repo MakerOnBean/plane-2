@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 import lombok.*;
 
 import javax.swing.*;
@@ -71,7 +71,7 @@ public class Base {
      * @param jFrame      窗体对象 需要添加时间监听时传入
      * @param gameService 游戏业务逻辑 需要碰撞检测时传入
      */
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         g.drawImage(image, x, y, null);
     }
 

@@ -1,6 +1,6 @@
 package com.dk.plane.entity;
 
-import com.dk.plane.service.GameService;
+import com.dk.plane.service.impl.GameServiceImpl;
 import com.dk.plane.utils.GameUtils;
 
 import javax.swing.*;
@@ -19,7 +19,7 @@ public class Enemy extends Base {
     }
 
     @Override
-    public void paintSelf(Graphics g, JFrame jFrame, GameService gameService) {
+    public void paintSelf(Graphics g, JFrame jFrame, GameServiceImpl gameService) {
         super.paintSelf(g, jFrame, gameService);
         y += speed;
 
@@ -35,13 +35,13 @@ public class Enemy extends Base {
                 shell.setX(100);
                 GameUtils.removeList.add(shell);
                 GameUtils.removeList.add(this);
-                GameService.score++;
+                GameServiceImpl.score++;
             }
         });
 
         //敌方飞机与我方飞机碰撞检测
         if (this.getRectangle().intersects(gameService.getPlane().getRectangle())) {
-            GameService.status = 3;
+            GameServiceImpl.status = 3;
         }
 
         //敌方飞机越界处理
